@@ -5,7 +5,7 @@ export async function POST(request) {
   try {
     const { full_name, email, password, role } = await request.json();
     await query(
-      "INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, ?)",
+      "INSERT INTO users (full_name, email, password, role) VALUES ($1, $2, $3, $4)",
       [full_name, email, password, role]
     );
     return NextResponse.json({ success: true, message: "Account created successfully!" });
