@@ -5,7 +5,7 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json();
     const results = await query(
-      "SELECT id, full_name, role FROM users WHERE email = ? AND password = ?",
+      "SELECT id, full_name, role FROM users WHERE email = $1 AND password = $2",
       [email, password]
     );
     if (results.length > 0) {
